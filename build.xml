@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project>
+	<property name = "project.dir" value = "D:/work/hibernate"/>
+	<property name = "src.dir" value = "D:/work/hibernate/src"/>
+	<property name = "lombok" value = "lombok-1.16.12.jar"/>
+	<property name = "log4j" value = "log4j-1.2.17.jar"/>
+	<property name = "hibernate_core" value = "hibernate-core-5.1.2.Final.jar"/>
+	
+    <target name="clean">
+        <delete dir="${project.dir}/build"/>
+    	<delete dir="WebContent/WEB-INF/lib/hibernateProject.jar"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${project.dir}/build/classes"/>
+        <javac  includeantruntime="false" srcdir="${src.dir}" destdir="${project.dir}/build/classes">
+        	<classpath>
+        	    			<pathelement location="lib\${lombok}"></pathelement>
+        	    			<pathelement location="lib\${log4j}"></pathelement>
+        	    	 		<pathelement location="lib\${hibernate_core}"></pathelement>
+        	    	 	</classpath>
+        </javac>
+    </target>
+
+    <target name="jar">
+        <jar destfile="WebContent/WEB-INF/lib/hibernateProject.jar" basedir="${project.dir}/build/classes">
+        	
+        </jar>
+    </target>
+</project>
